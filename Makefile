@@ -1,24 +1,18 @@
-IDIR =./include
-CC=g++
-CFLAGS= -I$(IDIR) -g -O0 -std=c++11
+CC := g++
+CFLAGS := -g -std=c++17
+INCLUDES := -I./include
+OBJECTS := window.o main.o
 
 ODIR=.
+IDIR=./include
 
-LIBS=
+LIBS := -lSDL2
 
-_DEPS = 
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+main: $(OBJECTS)
+	$(CC) $^ -o $@ $(LIBS)
 
-_OBJ = main.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-$(ODIR)/%.o: ./src/%.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-all: main
-
-main: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+%.o: ./src/%.cpp
+	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 
