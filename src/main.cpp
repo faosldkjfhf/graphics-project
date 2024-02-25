@@ -1,8 +1,9 @@
-#include <iostream>
 #include "window.hpp"
+#include <iostream>
 
 // TODO: Figure out how to display a window
 int main(int argc, char *argv[]) {
-  std::cout << "Hello" << std::endl;
+  Window *window = new Window();
+  delete window;
   return 0;
 }

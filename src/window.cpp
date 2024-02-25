@@ -1,7 +1,18 @@
 #include "window.hpp"
 
-Window::Window() {}
+Window::Window() {
+  if (!glfwInit()) {
+    // initialization failed
+  }
 
-Window::~Window() {}
+  _window = glfwCreateWindow(640, 480, "My Window", NULL, NULL);
 
-SDL_Window *Window::GetSDLWindow() { return nullptr; }
+  if (!_window) {
+    // window init failed
+  }
+}
+
+Window::~Window() {
+  glfwDestroyWindow(_window);
+  glfwTerminate();
+}

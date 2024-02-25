@@ -1,8 +1,8 @@
-#ifndef WINDOW
-#define WINDOW
+#pragma once
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_video.h>
+#include <GLFW/glfw3.h>
+
+// TODO: Use GLFW
 
 /*
  * Creates a window for the program
@@ -11,10 +11,7 @@ class Window {
 public:
   Window();
   ~Window();
-  SDL_Window *GetSDLWindow();
 
 private:
-  SDL_Window *window;
+  GLFWwindow *_window;
 };
-
-#endif

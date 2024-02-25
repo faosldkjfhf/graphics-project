@@ -6,7 +6,7 @@ OBJECTS := window.o main.o
 ODIR=.
 IDIR=./include
 
-LIBS := -lSDL2
+LIBS := `pkg-config --libs --cflags glfw3`
 
 main: $(OBJECTS)
 	$(CC) $^ -o $@ $(LIBS)
