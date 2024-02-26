@@ -1,12 +1,12 @@
 CC := g++
-CFLAGS := -g -std=c++17
-INCLUDES := -I./include
+CFLAGS := -g -std=c++20
+INCLUDES := -I./include 
 OBJECTS := window.o main.o
 
 ODIR=.
 IDIR=./include
 
-LIBS := `pkg-config --libs --cflags glfw3`
+LIBS := -lGL -ldl `pkg-config --libs --cflags glfw3 glew`
 
 main: $(OBJECTS)
 	$(CC) $^ -o $@ $(LIBS)
